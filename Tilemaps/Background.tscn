@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dunaptj2fbx1n"]
+
+[ext_resource type="Texture2D" uid="uid://rsy4eh1cdhg1" path="res://Sources/sprites/Blue.png" id="1_t6a8a"]
+[ext_resource type="Texture2D" uid="uid://51umwfpqbduy" path="res://Sources/sprites/Pink.png" id="2_16ts1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vunb6"]
+resource_name = "BG-Blue"
+texture = ExtResource("1_t6a8a")
+texture_region_size = Vector2i(64, 64)
+use_texture_padding = false
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffeeq"]
+resource_name = "BG-Pink"
+texture = ExtResource("2_16ts1")
+texture_region_size = Vector2i(64, 64)
+use_texture_padding = false
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_b4wnu"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_vunb6")
+sources/1 = SubResource("TileSetAtlasSource_ffeeq")
+
+[node name="Background" type="TileMap"]
+tile_set = SubResource("TileSet_b4wnu")
+cell_quadrant_size = 64
+format = 2

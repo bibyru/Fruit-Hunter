@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://daavhu04hj1h0"]
+
+[ext_resource type="Script" path="res://Scripts/DotFollower.gd" id="1_cdg2l"]
+[ext_resource type="PackedScene" uid="uid://chyqhrtqfqdih" path="res://Prefabs/DeathThings/Saw.tscn" id="2_1i8qf"]
+[ext_resource type="Texture2D" uid="uid://c4fa5x2yi21xo" path="res://icon.png" id="2_iur4c"]
+
+[node name="MovingSaw" type="Node2D" node_paths=PackedStringArray("dot1", "dot2")]
+script = ExtResource("1_cdg2l")
+dot1 = NodePath("Dot1")
+dot2 = NodePath("Dot2")
+
+[node name="Dot1" type="Node2D" parent="."]
+position = Vector2(-50, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Dot1"]
+texture_filter = 1
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_iur4c")
+
+[node name="Dot2" type="Node2D" parent="."]
+position = Vector2(50, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Dot2"]
+texture_filter = 1
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_iur4c")
+
+[node name="Saw" parent="." instance=ExtResource("2_1i8qf")]

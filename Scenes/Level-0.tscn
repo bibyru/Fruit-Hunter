@@ -1,0 +1,229 @@
+[gd_scene load_steps=21 format=3 uid="uid://benbqwj1vsuc7"]
+
+[ext_resource type="Script" path="res://Scripts/StartMenu.gd" id="1_atgm8"]
+[ext_resource type="StyleBox" uid="uid://by6v6kf338djc" path="res://Themes/button-hover.tres" id="2_3mqtl"]
+[ext_resource type="StyleBox" uid="uid://b61hrbrs2jf6m" path="res://Themes/button-normal.tres" id="3_65fn6"]
+[ext_resource type="StyleBox" uid="uid://dqscmlm7l0phs" path="res://Themes/panel.tres" id="4_doji4"]
+[ext_resource type="FontFile" uid="uid://8p77i1ll0rs0" path="res://Sources/fonts/California Scene.otf" id="5_d2l70"]
+[ext_resource type="PackedScene" uid="uid://cwafs3uae4rwb" path="res://Prefabs/Fruits/Cherry.tscn" id="6_2s6t1"]
+[ext_resource type="PackedScene" uid="uid://ibuxok0py6p1" path="res://Prefabs/UI/RecordsMenu.tscn" id="6_nr1gg"]
+[ext_resource type="AudioStream" uid="uid://b6q2rq2ymna0r" path="res://Sources/mp3/LOONA Choerry - (Inst) Love Cherry Motion.MP3.mp3" id="6_vl0uy"]
+[ext_resource type="PackedScene" uid="uid://ctbo7h3yrjbyp" path="res://Prefabs/Fruits/Strawberry.tscn" id="7_nma2s"]
+[ext_resource type="PackedScene" uid="uid://cl3vy2hu5jdvl" path="res://Prefabs/Fruits/Pineapple.tscn" id="8_2cfwc"]
+[ext_resource type="Texture2D" uid="uid://dwi6yd4gsmn4w" path="res://Sources/sprites/seul.png" id="9_whkot"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvs34"]
+bg_color = Color(0.870588, 0.556863, 0.858824, 1)
+
+[sub_resource type="Theme" id="Theme_xnwla"]
+default_font = ExtResource("5_d2l70")
+default_font_size = 20
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/styles/hover = ExtResource("2_3mqtl")
+Button/styles/normal = ExtResource("3_65fn6")
+Button/styles/pressed = ExtResource("2_3mqtl")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_hvs34")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Panel/styles/panel = ExtResource("4_doji4")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hoxsh"]
+atlas = ExtResource("9_whkot")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxt4x"]
+atlas = ExtResource("9_whkot")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kavp"]
+atlas = ExtResource("9_whkot")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdrcp"]
+atlas = ExtResource("9_whkot")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h21s"]
+atlas = ExtResource("9_whkot")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wdpo"]
+atlas = ExtResource("9_whkot")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdspa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hoxsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxt4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kavp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdrcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h21s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wdpo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Level-0" type="Node2D"]
+script = ExtResource("1_atgm8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_xnwla")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.92549, 0.819608, 0.917647, 1)
+
+[node name="Control" type="Control" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Seul" parent="CanvasLayer/Control/Control" instance=ExtResource("8_2cfwc")]
+position = Vector2(-193, 107)
+rotation = 3.14159
+scale = Vector2(7, -7)
+sprite_frames = SubResource("SpriteFrames_kdspa")
+frame = 0
+frame_progress = 0.0
+
+[node name="Cherry" parent="CanvasLayer/Control/Control" instance=ExtResource("6_2s6t1")]
+position = Vector2(-485, 138)
+scale = Vector2(7, 7)
+
+[node name="Strawberry" parent="CanvasLayer/Control/Control" instance=ExtResource("7_nma2s")]
+position = Vector2(-284, -171)
+scale = Vector2(7, 7)
+
+[node name="Pineapple" parent="CanvasLayer/Control/Control" instance=ExtResource("8_2cfwc")]
+position = Vector2(-567, -125)
+scale = Vector2(7, 7)
+
+[node name="Title" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -519.0
+offset_top = -284.0
+offset_right = -115.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/line_spacing = -19
+theme_override_font_sizes/font_size = 100
+text = "FRUIT
+HUNTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Line" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.0
+offset_top = -41.0
+offset_right = -63.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.270526
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Take the fruits as
+fast as you can!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -392.0
+offset_top = -14.5
+offset_right = -242.0
+offset_bottom = 237.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Start" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+action_mode = 0
+text = "Start"
+
+[node name="Options" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+action_mode = 0
+text = "Options"
+
+[node name="Records" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+action_mode = 0
+text = "Records"
+
+[node name="Quit" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+action_mode = 0
+text = "Quit"
+
+[node name="RecordsMenu" parent="." instance=ExtResource("6_nr1gg")]
+visible = false
+
+[node name="BGM-StartMenu" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("6_vl0uy")
+autoplay = true
+bus = &"BGM"
+
+[connection signal="button_down" from="CanvasLayer/Control/VBoxContainer/Start" to="." method="_on_start_button_down"]
+[connection signal="button_down" from="CanvasLayer/Control/VBoxContainer/Options" to="." method="_on_options_button_down"]
+[connection signal="button_down" from="CanvasLayer/Control/VBoxContainer/Records" to="." method="_on_records_button_down"]
+[connection signal="button_down" from="CanvasLayer/Control/VBoxContainer/Quit" to="." method="_on_quit_button_down"]

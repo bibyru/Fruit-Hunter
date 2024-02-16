@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://qekiyyofbhak"
+path="res://.godot/imported/a collect.mp3-d0e9a3a85e7d4c20ace9d324349b03ee.mp3str"
+
+[deps]
+
+source_file="res://Sources/mp3/a collect.mp3"
+dest_files=["res://.godot/imported/a collect.mp3-d0e9a3a85e7d4c20ace9d324349b03ee.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

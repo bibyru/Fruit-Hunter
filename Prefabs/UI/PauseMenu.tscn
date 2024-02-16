@@ -1,0 +1,242 @@
+[gd_scene load_steps=9 format=3 uid="uid://bi28dejylsmnb"]
+
+[ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_gjps1"]
+[ext_resource type="StyleBox" uid="uid://by6v6kf338djc" path="res://Themes/button-hover.tres" id="2_2avy4"]
+[ext_resource type="Theme" uid="uid://d38u8y8f6mdut" path="res://Themes/myTheme.tres" id="2_28db4"]
+[ext_resource type="AudioStream" uid="uid://d3sotg44qbpjm" path="res://Sources/mp3/BGM.mp3" id="2_j6dpv"]
+[ext_resource type="StyleBox" uid="uid://b61hrbrs2jf6m" path="res://Themes/button-normal.tres" id="3_efu3c"]
+[ext_resource type="StyleBox" uid="uid://dqscmlm7l0phs" path="res://Themes/panel.tres" id="4_3yiuj"]
+[ext_resource type="FontFile" uid="uid://8p77i1ll0rs0" path="res://Sources/fonts/California Scene.otf" id="5_oj3vx"]
+
+[sub_resource type="Theme" id="Theme_kynff"]
+default_font = ExtResource("5_oj3vx")
+default_font_size = 20
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/styles/hover = ExtResource("2_2avy4")
+Button/styles/normal = ExtResource("3_efu3c")
+Button/styles/pressed = ExtResource("2_2avy4")
+Panel/styles/panel = ExtResource("4_3yiuj")
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_gjps1")
+
+[node name="Sfx-Bgm" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("2_j6dpv")
+volume_db = -7.0
+bus = &"BGM"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_28db4")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_kynff")
+
+[node name="SideContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 58.0
+offset_top = -82.0
+offset_right = 182.0
+offset_bottom = 43.0
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Back" type="Button" parent="Control/SideContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="MainMenu" type="Button" parent="Control/SideContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="Control/SideContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="ContentContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -240.0
+offset_right = 437.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpperContainer" type="GridContainer" parent="Control/ContentContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 100
+columns = 2
+
+[node name="LeftContainer" type="GridContainer" parent="Control/ContentContainer/UpperContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="FullscreenLabel" type="Label" parent="Control/ContentContainer/UpperContainer/LeftContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Fullscreen"
+
+[node name="FullscreenButton" type="Button" parent="Control/ContentContainer/UpperContainer/LeftContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+text = "OFF"
+
+[node name="BorderlessLabel" type="Label" parent="Control/ContentContainer/UpperContainer/LeftContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Borderless"
+
+[node name="BorderlessButton" type="Button" parent="Control/ContentContainer/UpperContainer/LeftContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+text = "OFF"
+
+[node name="VsyncLabel" type="Label" parent="Control/ContentContainer/UpperContainer/LeftContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Vsync"
+
+[node name="VsyncButton" type="Button" parent="Control/ContentContainer/UpperContainer/LeftContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+text = "OFF"
+
+[node name="RightContainer" type="GridContainer" parent="Control/ContentContainer/UpperContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 20
+
+[node name="FruitCounter" type="Label" parent="Control/ContentContainer/UpperContainer/RightContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Fruits Collected: 0"
+
+[node name="DeathCounter" type="Label" parent="Control/ContentContainer/UpperContainer/RightContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Death Counter: 0"
+
+[node name="PlaytimeLabel" type="Label" parent="Control/ContentContainer/UpperContainer/RightContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Play Time: 0s"
+
+[node name="MidMargin" type="Label" parent="Control/ContentContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+text = "BGM Volume"
+horizontal_alignment = 1
+
+[node name="VolumeContainer" type="VBoxContainer" parent="Control/ContentContainer"]
+layout_mode = 2
+
+[node name="VolumeMaster" type="VBoxContainer" parent="Control/ContentContainer/VolumeContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/ContentContainer/VolumeContainer/VolumeMaster"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="Control/ContentContainer/VolumeContainer/VolumeMaster"]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 0.3
+scrollable = false
+
+[node name="MidMargin" type="Label" parent="Control/ContentContainer/VolumeContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 10
+text = "BGM Volume"
+horizontal_alignment = 1
+
+[node name="VolumeBGM" type="VBoxContainer" parent="Control/ContentContainer/VolumeContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/ContentContainer/VolumeContainer/VolumeBGM"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "BGM Volume"
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="Control/ContentContainer/VolumeContainer/VolumeBGM"]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 0.5
+scrollable = false
+
+[node name="MidMargin2" type="Label" parent="Control/ContentContainer/VolumeContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 10
+text = "BGM Volume"
+horizontal_alignment = 1
+
+[node name="VolumeSFX" type="VBoxContainer" parent="Control/ContentContainer/VolumeContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/ContentContainer/VolumeContainer/VolumeSFX"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "SFX Volume"
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="Control/ContentContainer/VolumeContainer/VolumeSFX"]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+scrollable = false
+
+[node name="Playtime" type="Timer" parent="."]
+process_mode = 1
+one_shot = true
+
+[connection signal="pressed" from="Control/SideContainer/Back" to="." method="_on_back_pressed" flags=18]
+[connection signal="pressed" from="Control/SideContainer/MainMenu" to="." method="_on_main_menu_pressed" flags=18]
+[connection signal="pressed" from="Control/SideContainer/Quit" to="." method="_on_quit_pressed" flags=18]
+[connection signal="toggled" from="Control/ContentContainer/UpperContainer/LeftContainer/FullscreenButton" to="." method="_on_button_fullscreen_toggled" flags=18]
+[connection signal="toggled" from="Control/ContentContainer/UpperContainer/LeftContainer/BorderlessButton" to="." method="_on_button_borderless_toggled" flags=18]
+[connection signal="toggled" from="Control/ContentContainer/UpperContainer/LeftContainer/VsyncButton" to="." method="_on_button_vsync_toggled" flags=18]
+[connection signal="value_changed" from="Control/ContentContainer/VolumeContainer/VolumeMaster/Slider" to="." method="_on_slider_master_value_changed"]
+[connection signal="value_changed" from="Control/ContentContainer/VolumeContainer/VolumeBGM/Slider" to="." method="_on_slider_bgm_value_changed"]
+[connection signal="value_changed" from="Control/ContentContainer/VolumeContainer/VolumeSFX/Slider" to="." method="_on_slider_sfx_value_changed"]
+[connection signal="timeout" from="Playtime" to="." method="_on_playtime_timeout"]
